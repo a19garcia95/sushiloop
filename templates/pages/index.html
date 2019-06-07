@@ -1,0 +1,834 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- USE href="{% url 'about' %}" THIS IS THE NAME THAT YOU GIVE IN THE URL PATH IN URLS.PY-->
+
+{% if user.is_authenticated %}
+
+<body>
+    <div class="layer"></div>
+    <!-- Mobile menu overlay mask -->
+
+    <div id="preloader">
+      <div data-loader="circle-side"></div>
+    </div>
+    <!-- End Preload -->
+
+
+    <!-- 
+                  <header class="header_sticky">
+      <div class="container">
+        <div class="row" style="height: 15px">
+          <div class="col-lg-3 col-6">
+            <div id="logo_home">
+              <h3>Sushiloop</h3>
+            </div>
+          </div>
+          <nav class="col-lg-9 col-6">
+          
+            <div class="main-menu" style="margin-bottom: 15px">
+              <ul>
+                <li>
+                      <a href="#0"
+                      >WELCOME: {{ user.username|upper }}<i></i
+                    ></a>
+                </li>                  
+               
+                <li>
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                        {% csrf_token %}
+                        <input type="submit" value="LOGOUT" class="btn btn-light" />
+                    </form>
+                </li>
+               
+              </ul>
+            </div>
+           
+          </nav>
+        </div>
+      </div>
+     
+    </header>
+    -->
+    
+    <!-- /header -->
+
+    <!-- SECOND HEADER FOR TESTING -->
+    <header class="static">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <div id="logo">
+                <h3><a href="/" style="color:gray">Sushiloop</a></h3>
+              </div>
+            </div>
+            <nav class="col-lg-9 col-6">
+              <a
+                class="cmn-toggle-switch cmn-toggle-switch__htx open_close"
+                href="#0"
+                ><span>Menu mobile</span></a
+              >
+              
+              <div class="main-menu">
+                <ul>
+                  <li><a href="#0">WELCOME: {{ user.username|upper }}</a></li>
+               
+                  <li>
+      
+                  
+                      <form action="{% url 'logout' %}" method="POST" id="logout">
+                          {% csrf_token %}
+                          <input type="submit" value="LOGOUT" style="border:none; color:gray"/>
+                      </form>
+                   
+                  </li>
+                </ul>
+              </div>
+              <!-- /main-menu -->
+            </nav>
+          </div>
+        </div>
+        <!-- container -->
+      </header>
+
+    <main>
+      <div class="hero_home version_12" style="background-color:#3f4079">
+        <div class="content">
+          <h3>Lets find the best sushi in town!</h3>
+          <p>
+            Enter city below
+          </p>
+          <form action="{% url 'search_results' %}" method="POST">
+            {% csrf_token %}
+            <div id="custom-search-input">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class=" search-query"
+                  placeholder="Ex. San Francisco ...."
+                  name="search_results"
+                />
+                <input type="submit" class="btn_search" value="Search" />
+              </div>
+             
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /Hero -->
+
+      <div class="container margin_120_95">
+        <div class="main_title">
+          <h2>Discover the <strong>best</strong> sushi restaurants</h2>
+        </div>
+        <div class="row add_bottom_30">
+          <div class="col-lg-4">
+            <div class="box_feat" id="icon_1">
+              <span></span>
+              <h3>Find a sushi restaurant</h3>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box_feat" id="icon_2">
+              <span></span>
+              <h3>Take a look at the menu</h3>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box_feat" id="icon_3">
+              <h3>Decide and book a reservation</h3>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container -->
+
+      <div class="bg_color_1">
+        <div class="container margin_120_95">
+          <div class="main_title">
+            <h2>Top sushi restaurants</h2>
+          </div>
+          <div id="reccomended" class="owl-carousel owl-theme">
+            <div class="item">
+              <a href="https://www.yelp.com/biz/masa-new-york">
+                <div class="title">
+                  <h4>Masa</h4>
+                </div>
+                <img src="static/img/masa.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a
+                href="https://www.yelp.com/biz/%E6%9D%BE%E6%A0%84-%E6%B8%8B%E8%B0%B7%E5%8C%BA"
+              >
+                <div class="title">
+                  <h4>Matsue</h4>
+                </div>
+                <img src="static/img/matsue.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a
+                href="https://www.tripadvisor.com/Restaurant_Review-g294217-d12763286-Reviews-UMI_on_Hollywood_Road-Hong_Kong.html"
+              >
+                <div class="title">
+                  <h4>Umi</h4>
+                </div>
+                <img src="static/img/umi.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a href="https://www.yelp.com/biz/miku-vancouver-2">
+                <div class="title">
+                  <h4>Miku</h4>
+                </div>
+                <img src="static/img/miku.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a href="https://www.yelp.com/biz/buda-sushi-rio-de-janeiro">
+                <div class="title">
+                  <h4>Buda</h4>
+                </div>
+                <img src="static/img/buda.jpg" alt="" />
+              </a>
+            </div>
+          </div>
+          <!-- /carousel -->
+        </div>
+        <!-- /container -->
+      </div>
+      <!-- /white_bg -->
+
+      
+
+      <!-- SLIDER IS OPTIONAL -->
+
+      
+
+
+
+      
+     
+
+    </main>
+    <!-- /main content -->
+
+    <footer>
+        <div class="container margin_60_35">
+          <div class="row">
+            <div class="col-lg-3 col-md-12">
+              <h4><a href="/">Sushiloop</a></h4>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h5>About</h5>
+              <ul class="links">
+                <li><a href="/">About us</a></li>
+                <li><a href="/">Blog</a></li>
+                <li><a href="/">FAQ</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h5>Useful links</h5>
+              <ul class="links">
+                <li><a href="#0">New York's Best</a></li>
+                <li><a href="#0">Berlin's Best</a></li>
+                <li><a href="#0">Tokyo's Best</a></li>
+                <li><a href="#0">San Francisco's Best</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h5>Contact with Us</h5>
+              <ul class="contacts">
+                <li>
+                  <a href="tel://61280932400"
+                    ><i class="icon_mobile"></i> + 1 415 779 7601</a
+                  >
+                </li>
+                <li>
+                  <a href="mailto:info@findoctor.com"
+                    ><i class="icon_mail_alt"></i> help@sushiloop.com</a
+                  >
+                </li>
+              </ul>
+              <div class="follow_us">
+                <h5>Follow us</h5>
+                <ul>
+                  <li>
+                    <a href="/"><i class="social_facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="/"><i class="social_twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="/"><i class="social_linkedin"></i></a>
+                  </li>
+                  <li>
+                    <a href="/"><i class="social_instagram"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--/row-->
+          <hr />
+          <div class="row">
+            <div class="col-md-8">
+              <ul id="additional_links">
+                <li>Terms and conditions</li>
+                <li>Privacy</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <div id="copy">© 2017 Sushiloop</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <!--/footer-->
+
+    <div id="toTop"></div>
+    <!-- Back to top button -->
+
+    <!-- COMMON SCRIPTS -->
+    <script src="static/js/jquery-2.2.4.min.js"></script>
+    <script src="static/js/common_scripts.min.js"></script>
+    <script src="static/js/functions.js"></script>
+
+    <!-- REVOLUTION SLIDER SCRIPTS -->
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/jquery.themepunch.tools.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/jquery.themepunch.revolution.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.actions.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.carousel.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.kenburn.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.layeranimation.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.migration.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.navigation.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.parallax.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.slideanims.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.video.min.js"
+    ></script>
+    <script type="text/javascript">
+      var tpj = jQuery;
+      var revapi72;
+      tpj(document).ready(function() {
+        if (tpj("#rev_slider_72_1").revolution == undefined) {
+          revslider_showDoubleJqueryError("#rev_slider_72_1");
+        } else {
+          revapi72 = tpj("#rev_slider_72_1")
+            .show()
+            .revolution({
+              sliderType: "standard",
+              jsFileLocation: "static/rev-slider-files/js/",
+              sliderLayout: "auto",
+              dottedOverlay: "none",
+              delay: 9000,
+              navigation: {
+                keyboardNavigation: "off",
+                keyboard_direction: "horizontal",
+                mouseScrollNavigation: "off",
+                mouseScrollReverse: "default",
+                onHoverStop: "off",
+                touch: {
+                  touchenabled: "on",
+                  touchOnDesktop: "off",
+                  swipe_threshold: 75,
+                  swipe_min_touches: 1,
+                  swipe_direction: "horizontal",
+                  drag_block_vertical: false
+                },
+                arrows: {
+                  style: "gyges",
+                  enable: true,
+                  hide_onmobile: true,
+                  hide_under: 560,
+                  hide_onleave: true,
+                  hide_delay: 200,
+                  hide_delay_mobile: 1200,
+                  tmp: "",
+                  left: {
+                    h_align: "left",
+                    v_align: "center",
+                    h_offset: 20,
+                    v_offset: 0
+                  },
+                  right: {
+                    h_align: "right",
+                    v_align: "center",
+                    h_offset: 20,
+                    v_offset: 0
+                  }
+                }
+              },
+              visibilityLevels: [1240, 1024, 778, 480],
+              gridwidth: 1240,
+              gridheight: 600,
+              lazyType: "none",
+              shadow: 0,
+              spinner: "spinner0",
+              stopLoop: "off",
+              stopAfterLoops: -1,
+              stopAtSlide: -1,
+              shuffle: "off",
+              autoHeight: "off",
+              disableProgressBar: "on",
+              hideThumbsOnMobile: "off",
+              hideSliderAtLimit: 0,
+              hideCaptionAtLimit: 0,
+              hideAllCaptionAtLilmit: 0,
+              debugMode: false,
+              fallbacks: {
+                simplifyAll: "off",
+                nextSlideOnWindowFocus: "off",
+                disableFocusListener: false
+              }
+            });
+        }
+      }); /*ready*/
+    </script>
+  </body>
+</html>
+
+{% else %}
+
+<body>
+    <div class="layer"></div>
+    <!-- Mobile menu overlay mask -->
+
+    <div id="preloader">
+      <div data-loader="circle-side"></div>
+    </div>
+    <!-- End Preload -->
+
+
+    <!-- 
+                  <header class="header_sticky">
+      <div class="container">
+        <div class="row" style="height: 15px">
+          <div class="col-lg-3 col-6">
+            <div id="logo_home">
+              <h3>Sushiloop</h3>
+            </div>
+          </div>
+          <nav class="col-lg-9 col-6">
+          
+            <div class="main-menu" style="margin-bottom: 15px">
+              <ul>
+                <li>
+                      <a href="#0"
+                      >WELCOME: {{ user.username|upper }}<i></i
+                    ></a>
+                </li>                  
+               
+                <li>
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                        {% csrf_token %}
+                        <input type="submit" value="LOGOUT" class="btn btn-light" />
+                    </form>
+                </li>
+               
+              </ul>
+            </div>
+           
+          </nav>
+        </div>
+      </div>
+     
+    </header>
+    -->
+    
+    <!-- /header -->
+
+    <!-- SECOND HEADER FOR TESTING -->
+    <header class="static">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <div id="logo">
+                <h3><a href="/" style="color:gray">Sushiloop</a></h3>
+              </div>
+            </div>
+            <nav class="col-lg-9 col-6">
+              <a
+                class="cmn-toggle-switch cmn-toggle-switch__htx open_close"
+                href="#0"
+                ><span>Menu mobile</span></a
+              >
+              
+              <div class="main-menu">
+                <ul>
+                  <li><a href="{% url 'register' %}">Register</a></li>
+                  <li><a href="{% url 'login' %}">Login</a></li>
+                </ul>
+              </div>
+              <!-- /main-menu -->
+            </nav>
+          </div>
+        </div>
+        <!-- container -->
+      </header>
+
+    <main>
+      <div class="hero_home version_12" style="background-color:#3f4079">
+        <div class="content">
+          <h3>Lets find the best sushi in town!</h3>
+          <p style="padding-top:15px">
+            Register or Login first
+          </p>
+          <p class="text-center add_top_30"><a href="{% url 'register' %}">
+              <input type="submit" class="btn btn-md" value="Click here to Register" style="background-color: #e74e84; color:white" />
+
+          </a>
+          </p>
+        </div>
+      </div>
+      <!-- /Hero -->
+
+      <div class="container margin_120_95">
+        <div class="main_title">
+          <h2>Discover the <strong>best</strong> sushi restaurants</h2>
+        </div>
+        <div class="row add_bottom_30">
+          <div class="col-lg-4">
+            <div class="box_feat" id="icon_1">
+              <span></span>
+              <h3>Find a sushi restaurant</h3>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box_feat" id="icon_2">
+              <span></span>
+              <h3>Take a look at the menu</h3>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box_feat" id="icon_3">
+              <h3>Decide and book a reservation</h3>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container -->
+
+      <div class="bg_color_1">
+        <div class="container margin_120_95">
+          <div class="main_title">
+            <h2>Top sushi restaurants</h2>
+          </div>
+          <div id="reccomended" class="owl-carousel owl-theme">
+            <div class="item">
+              <a href="https://www.yelp.com/biz/masa-new-york">
+                <div class="title">
+                  <h4>Masa</h4>
+                </div>
+                <img src="static/img/masa.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a
+                href="https://www.yelp.com/biz/%E6%9D%BE%E6%A0%84-%E6%B8%8B%E8%B0%B7%E5%8C%BA"
+              >
+                <div class="title">
+                  <h4>Matsue</h4>
+                </div>
+                <img src="static/img/matsue.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a
+                href="https://www.tripadvisor.com/Restaurant_Review-g294217-d12763286-Reviews-UMI_on_Hollywood_Road-Hong_Kong.html"
+              >
+                <div class="title">
+                  <h4>Umi</h4>
+                </div>
+                <img src="static/img/umi.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a href="https://www.yelp.com/biz/miku-vancouver-2">
+                <div class="title">
+                  <h4>Miku</h4>
+                </div>
+                <img src="static/img/miku.jpg" alt="" />
+              </a>
+            </div>
+            <div class="item">
+              <a href="https://www.yelp.com/biz/buda-sushi-rio-de-janeiro">
+                <div class="title">
+                  <h4>Buda</h4>
+                </div>
+                <img src="static/img/buda.jpg" alt="" />
+              </a>
+            </div>
+          </div>
+          <!-- /carousel -->
+        </div>
+        <!-- /container -->
+      </div>
+      <!-- /white_bg -->
+
+      
+
+      <!-- SLIDER IS OPTIONAL -->
+
+      
+
+
+
+      
+     
+
+    </main>
+    <!-- /main content -->
+
+    <footer>
+        <div class="container margin_60_35">
+          <div class="row">
+            <div class="col-lg-3 col-md-12">
+              <h4><a href="/">Sushiloop</a></h4>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h5>About</h5>
+              <ul class="links">
+                <li><a href="/">About us</a></li>
+                <li><a href="/">Blog</a></li>
+                <li><a href="/">FAQ</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h5>Useful links</h5>
+              <ul class="links">
+                <li><a href="#0">New York's Best</a></li>
+                <li><a href="#0">Berlin's Best</a></li>
+                <li><a href="#0">Tokyo's Best</a></li>
+                <li><a href="#0">San Francisco's Best</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <h5>Contact with Us</h5>
+              <ul class="contacts">
+                <li>
+                  <a href="tel://61280932400"
+                    ><i class="icon_mobile"></i> + 1 415 779 7601</a
+                  >
+                </li>
+                <li>
+                  <a href="mailto:info@findoctor.com"
+                    ><i class="icon_mail_alt"></i> help@sushiloop.com</a
+                  >
+                </li>
+              </ul>
+              <div class="follow_us">
+                <h5>Follow us</h5>
+                <ul>
+                  <li>
+                    <a href="/"><i class="social_facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="/"><i class="social_twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="/"><i class="social_linkedin"></i></a>
+                  </li>
+                  <li>
+                    <a href="/"><i class="social_instagram"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--/row-->
+          <hr />
+          <div class="row">
+            <div class="col-md-8">
+              <ul id="additional_links">
+                <li>Terms and conditions</li>
+                <li>Privacy</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <div id="copy">© 2017 Sushiloop</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <!--/footer-->
+
+    <div id="toTop"></div>
+    <!-- Back to top button -->
+
+    <!-- COMMON SCRIPTS -->
+    <script src="static/js/jquery-2.2.4.min.js"></script>
+    <script src="static/js/common_scripts.min.js"></script>
+    <script src="static/js/functions.js"></script>
+
+    <!-- REVOLUTION SLIDER SCRIPTS -->
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/jquery.themepunch.tools.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/jquery.themepunch.revolution.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.actions.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.carousel.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.kenburn.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.layeranimation.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.migration.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.navigation.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.parallax.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.slideanims.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="static/rev-slider-files/js/extensions/revolution.extension.video.min.js"
+    ></script>
+    <script type="text/javascript">
+      var tpj = jQuery;
+      var revapi72;
+      tpj(document).ready(function() {
+        if (tpj("#rev_slider_72_1").revolution == undefined) {
+          revslider_showDoubleJqueryError("#rev_slider_72_1");
+        } else {
+          revapi72 = tpj("#rev_slider_72_1")
+            .show()
+            .revolution({
+              sliderType: "standard",
+              jsFileLocation: "static/rev-slider-files/js/",
+              sliderLayout: "auto",
+              dottedOverlay: "none",
+              delay: 9000,
+              navigation: {
+                keyboardNavigation: "off",
+                keyboard_direction: "horizontal",
+                mouseScrollNavigation: "off",
+                mouseScrollReverse: "default",
+                onHoverStop: "off",
+                touch: {
+                  touchenabled: "on",
+                  touchOnDesktop: "off",
+                  swipe_threshold: 75,
+                  swipe_min_touches: 1,
+                  swipe_direction: "horizontal",
+                  drag_block_vertical: false
+                },
+                arrows: {
+                  style: "gyges",
+                  enable: true,
+                  hide_onmobile: true,
+                  hide_under: 560,
+                  hide_onleave: true,
+                  hide_delay: 200,
+                  hide_delay_mobile: 1200,
+                  tmp: "",
+                  left: {
+                    h_align: "left",
+                    v_align: "center",
+                    h_offset: 20,
+                    v_offset: 0
+                  },
+                  right: {
+                    h_align: "right",
+                    v_align: "center",
+                    h_offset: 20,
+                    v_offset: 0
+                  }
+                }
+              },
+              visibilityLevels: [1240, 1024, 778, 480],
+              gridwidth: 1240,
+              gridheight: 600,
+              lazyType: "none",
+              shadow: 0,
+              spinner: "spinner0",
+              stopLoop: "off",
+              stopAfterLoops: -1,
+              stopAtSlide: -1,
+              shuffle: "off",
+              autoHeight: "off",
+              disableProgressBar: "on",
+              hideThumbsOnMobile: "off",
+              hideSliderAtLimit: 0,
+              hideCaptionAtLimit: 0,
+              hideAllCaptionAtLilmit: 0,
+              debugMode: false,
+              fallbacks: {
+                simplifyAll: "off",
+                nextSlideOnWindowFocus: "off",
+                disableFocusListener: false
+              }
+            });
+        }
+      }); /*ready*/
+    </script>
+  </body>
+</html>
+
+{% endif %}
+
+
+  
+{% endblock %}
